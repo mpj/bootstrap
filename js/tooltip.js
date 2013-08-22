@@ -79,6 +79,7 @@
   }
 
   Tooltip.prototype.getOptions = function (options) {
+    
     options = $.extend({}, this.getDefaults(), this.$element.data(), options)
 
     if (options.delay && typeof options.delay == 'number') {
@@ -86,6 +87,10 @@
         show: options.delay
       , hide: options.delay
       }
+    }
+    
+    if (typeof(options.html) !== 'undefined' && typeof(options.html) !== 'boolean') {
+      throw new Error('The tooltip html option should be either undefined or set to a boolean value.');
     }
 
     return options
